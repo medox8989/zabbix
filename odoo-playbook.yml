@@ -1,0 +1,6 @@
+- name : Install odoo-docker
+  hosts : all
+
+  roles :
+    - role : docker
+    - role : odoo-docker

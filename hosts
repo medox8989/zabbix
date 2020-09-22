@@ -1,0 +1,23 @@
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
+ansible_ssh_private_key_file="/home/medox/.ssh/id_rsa.pub"
+ansible_user=medox
+ansible_port=22
+ansible_sudo_pass=Loop
+[odoo]
+#sabya-mqr-odoo ansible_host=54.170.9.47 ansible_user=medox ansible_port=1722
+#sudayr-mqr-odoo ansible_host=52.48.101.62 ansible_user=medox ansible_port=1722
+#taief-mqr ansible_host=34.91.99.62 ansible_user=medox ansible_port=1722
+#test-server ansible_host=192.168.1.18 ansible_user=medox ansible_port=22
+#Al-habib-odoo ansible_host=134.209.206.211 ansible_user=medox ansible_port=1722
+#daamah-odoo ansible_host=108.128.104.130 ansible_user=medox ansible_port=1722
+#soada-odoo ansible_host=188.166.5.224 ansible_user=medox ansible_port=1722
+#[magento]
+#daamah-magento ansible_host=34.250.201.128 ansible_user=medox ansible_port=1722
+odoo-dockerup ansible_host=192.168.1.17 ansible_user=medox ansible_port=22
+#[bbb]
+#bbb-server ansible_host=52.51.13.110 ansible_user=medox ansible_port=1722
+#bbb-dev-server ansible_host=163.172.72.61 ansible_user=medox ansible_port=1722
+#bbb-sabya ansible_host=54.247.128.80 ansible_user=medox ansible_port=1722
+#bbb-sudayr ansible_host=54.155.90.26 ansible_user=medox ansible_port=1722
+#bbb-taief ansible_host=34.249.148.120 ansible_user=medox ansible_port=1722

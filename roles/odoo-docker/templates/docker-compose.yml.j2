@@ -1,0 +1,25 @@
+version: 2
+services:
+  odoo:
+    image: odoo:{{ odoo_version }}
+    user: "odoo:odoo"
+    ports:"
+      - "8069:8069"
+    volumes:
+      - "data_odoo_config:/etc/odoo:rw,Z"
+      - "data_odoo_addons:/mnt/extra-addons:rw,Z"
+    environment:
+      - POSTGRES_USER={{ odoo_db_user }}
+      - POSTGRES_PASSWORD={{ odoo_db_password }}
+  db:
+    image: postgres
+    volumes:
+      - "data_db:/var/lib/postgresql/data:rw,Z"
+    environment:
+      - POSTGRES_USER={{ odoo_db_user }}
+      - POSTGRES_PASSWORD={{ odoo_db_password }}
+
+volumes:
+  - data_odoo_config:{{ odoo_app_path }}/volume/config
+  - data_odoo_addons:{{ odoo_app_path }}/volume/plugins
+  - data_db

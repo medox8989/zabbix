@@ -1,0 +1,58 @@
+---
+- name: Create docker compose directory
+  file:
+    path: "/opt/odoo/"
+    stage: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Create docker volume directory
+  file:
+    path: "/opt/odoo/volume"
+    stage: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Create docker config volume directory
+  file:
+    path: "/opt/odoo/volume/config"
+    stage: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Create docker plugins volume directory
+  file:
+    path: "/opt/odoo/volume/plugins"
+    stage: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: Deploy docker-compose file
+  template:
+    src: docker-compose.yml.j2
+    dest: "/opt/odoo/docker-compose.yml"
+    owner: root
+    group: root
+
+- name: Deploy odoo config file
+  template:
+    src: odoo.conf.j2
+    dest: "/opt/odoo/volume/config/odoo.conf"
+    owner: root
+    group: root
+
+- name: Start docker services
+  docker_service:
+    project_src: "/opt/odoo/"
+    project_name: odoo
+    restarted: yes
+
+- name: Assert service started
+  assert:
+    that:
+      - "odoo.odoo_odoo_1.state.running"
+      - "db.odoo_db_1.state.running"
